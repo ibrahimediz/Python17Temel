@@ -6,7 +6,7 @@
 # -=
 # /=
 # *=
-
+      
 
 # **
 # //
@@ -20,5 +20,5 @@
 # var3 = var1 // var2
 # print(var3)
 
-
+# github kurduk ve değişiklik yaptık
 
