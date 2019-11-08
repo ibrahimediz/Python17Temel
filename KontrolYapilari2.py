@@ -100,19 +100,28 @@ for i in range(20,2,-2)
 # print(sonuc)
 
 
-import random
-sayi = random.randint(0,100)
-hak = 5
-while hak > 0:
-    tahmin = int(input("tahmin giriniz"))
-    hak -= 1
-    if tahmin > sayi :
-        print(" Aşağı Kalan Hak {}".format(hak))
-    elif tahmin < sayi:
-        print(" Yukarı Kalan Hak {}".format(hak))
-    elif tahmin == sayi:
-        print("tebrikler")
-        break
-    
-print("İyi Günler")
+# import random
+# while True:
+#     sayi = random.randint(0,100)
+#     secim = "e"
+#     hak = 5
+#     while hak > 0:
+#         tahmin = int(input("tahmin giriniz"))
+#         hak -= 1
+#         if tahmin > sayi :
+#             print(" Aşağı Kalan Hak {}".format(hak))
+#         elif tahmin < sayi:
+#             print(" Yukarı Kalan Hak {}".format(hak))
+#         elif tahmin == sayi:
+#             print("tebrikler")
+#             break
+#     else:
+#         print("Oyun Bitti")
+#     secim = input("Tekrar Oynamak İster Misiniz (e/h) :")
+#     if secim.lower() == "h":
+#         break
+#     elif secim.lower() == "x":
+#         hak = 5
+#         print("Aynı Sayı Hak Yenilendi")
+# print("İyi Günler")
 
