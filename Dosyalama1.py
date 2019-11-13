@@ -26,7 +26,7 @@ else:
     dosya.truncate()
     dosya.writelines(liste)
     dosya.close()
-    
+
     
         
         
