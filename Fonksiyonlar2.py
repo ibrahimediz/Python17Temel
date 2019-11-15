@@ -1,0 +1,56 @@
+def fonk():
+    print("Merhaba")
+
+def toplam(a=0,b=0):
+    return a+b
+
+x = 5
+y = 4
+sonuc =  toplam(b=x,a=y)
+print(sonuc)
+"""
+Normal Tanımlama
+1- a,b
+Parametre belli sınırsız değer
+2- *args
+Parametre belli değil değer belli değil
+3-**kwargs
+"""
+def toplam(a=0,b=0):
+    return a+b
+def cikarma(a=0,b=0):
+    return a-b
+def carpma(a=0,b=0):
+    return a*b
+def bolme(a=0,b=0):
+    return a/b
+def calistir(fonk,a,b):
+    return fonk(a,b)
+menu = """
+1-Toplama
+2-Çıkarma
+3-Çarpma
+4-Bölme
+5-Çıkış
+işlem seçiniz :
+"""
+
+while True:
+    sonuc = 0
+    islem =int(input(menu))
+    if islem == 5:
+        break
+    sayi1 = int(input("1. Sayıyı Giriniz"))
+    sayi2 = int(input("1. Sayıyı Giriniz"))
+    if islem == 1:
+        sonuc = calistir(toplam,sayi1,sayi2)
+    elif islem == 2s:
+        sonuc = calistir(toplam,sayi1,sayi2)    
+
+
+
+
+
+
+
+

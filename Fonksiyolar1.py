@@ -26,8 +26,8 @@
 # fibanocci(10)
 # fibanocci(20)
 
-# def fonk():
-#     pass
+def fonk():
+    pass
 
 # def fonk(a):
 #     return str(a**2)
