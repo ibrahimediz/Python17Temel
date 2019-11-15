@@ -26,6 +26,17 @@ def bolme(a=0,b=0):
     return a/b
 def calistir(fonk,a,b):
     return fonk(a,b)
+
+def islemGoster(islem):
+    if islem == 1:
+        return "+"
+    elif islem == 2:
+        return "-"
+    elif islem == 3:
+        return "*"
+    elif islem == 4:
+        return "/"
+       
 menu = """
 1-Toplama
 2-Çıkarma
@@ -44,11 +55,13 @@ while True:
     sayi2 = int(input("1. Sayıyı Giriniz"))
     if islem == 1:
         sonuc = calistir(toplam,sayi1,sayi2)
-    elif islem == 2s:
-        sonuc = calistir(toplam,sayi1,sayi2)    
-
-
-
+    elif islem == 2:
+        sonuc = calistir(cikarma,sayi1,sayi2)    
+    elif islem == 3:
+        sonuc = calistir(carpma,sayi1,sayi2) 
+    elif islem == 4:
+        sonuc = calistir(bolme,sayi1,sayi2) 
+    print("{} {} {} = {}".format(sayi1,islemGoster(islem),sayi2,sonuc))
 
 
 
