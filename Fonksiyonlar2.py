@@ -16,6 +16,7 @@ Parametre belli sınırsız değer
 Parametre belli değil değer belli değil
 3-**kwargs
 """
+
 def toplam(a=0,b=0):
     return a+b
 def cikarma(a=0,b=0):
@@ -24,8 +25,10 @@ def carpma(a=0,b=0):
     return a*b
 def bolme(a=0,b=0):
     return a/b
-def calistir(fonk,a,b):
-    return fonk(a,b)
+def calistir(sayi,a,b):
+    return islem[sayi](a,b)
+
+
 
 def islemGoster(islem):
     if islem == 1:
