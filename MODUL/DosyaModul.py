@@ -40,15 +40,20 @@ def Listele():
     finally:
         dosya.close()
 
-def Guncelleme(adi="-",soyadi="-",tel="0"):
+def Guncelleme():
     try:
         dosya = dosyaAc()
         liste = dosya.readlines()
+        Listele()
+        sira = int(input("Güncellemek istediğiniz kaydı seçiniz")) - 1
+        adi = input("Adını Giriniz:")
+        soyadi = input("Soyadını Giriniz:")
+        tel = input("Telefon Giriniz:")
         if not tel.isnumeric():
             tel = 0
         kayit = "{};{};{}\n".format(adi,\
         soyadi,tel)
-        liste.append(kayit)
+        liste[sira] = kayit
         dosya.seek(0)
         dosya.truncate()
         dosya.writelines(liste)
@@ -58,3 +63,23 @@ def Guncelleme(adi="-",soyadi="-",tel="0"):
         return False
     finally:
         dosya.close()
+
+
+
+def Silme():
+    try:
+        dosya = dosyaAc()
+        liste = dosya.readlines()
+        Listele()
+        sira = int(input("Silmek istediğiniz kaydı seçiniz")) - 1
+        del liste[sira]
+        dosya.seek(0)
+        dosya.truncate()
+        dosya.writelines(liste)
+        return True
+    except Exception as hata:
+        print("Hata Var :",hata)
+        return False
+    finally:
+        dosya.close()
+
