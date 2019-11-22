@@ -6,15 +6,34 @@ def dosyaAc(adres = "teldefter.csv"):
     else:
         dosya = open(adres,"w+",encoding="UTF-8")
     return dosya
+# def Ekleme(adi="-",soyadi="-",tel="0"):
+#     try:
+#         dosya = dosyaAc()
+#         liste = dosya.readlines()
+#         if not tel.isnumeric():
+#             tel = 0
+#         kayit = "{};{};{}\n".format(adi,\
+#         soyadi,tel)
+#         liste.append(kayit)
+#         dosya.seek(0)
+#         dosya.truncate()
+#         dosya.writelines(liste)
+#         return True
+#     except Exception as hata:
+#         print("Hata Var :",hata)
+#         return False
+#     finally:
+#         dosya.close()
 
-def Ekleme(adi="-",soyadi="-",tel="0"):
+def Ekleme(*args):
     try:
         dosya = dosyaAc()
         liste = dosya.readlines()
-        if not tel.isnumeric():
-            tel = 0
-        kayit = "{};{};{}\n".format(adi,\
-        soyadi,tel)
+        kayit = ""
+        for item in args:
+            kayit += "{};".format(input(item+"Giriniz"))
+        # Ali;Veli;123123;
+        kayit = kayit.rstrip(";") + "\n"
         liste.append(kayit)
         dosya.seek(0)
         dosya.truncate()
@@ -46,13 +65,11 @@ def Guncelleme():
         liste = dosya.readlines()
         Listele()
         sira = int(input("Güncellemek istediğiniz kaydı seçiniz")) - 1
-        adi = input("Adını Giriniz:")
-        soyadi = input("Soyadını Giriniz:")
-        tel = input("Telefon Giriniz:")
-        if not tel.isnumeric():
-            tel = 0
-        kayit = "{};{};{}\n".format(adi,\
-        soyadi,tel)
+        kayit = ""
+        for item in args:
+            kayit += "{};".format(input(item+"Giriniz"))
+        # Ali;Veli;123123;
+        kayit = kayit.rstrip(";") + "\n"
         liste[sira] = kayit
         dosya.seek(0)
         dosya.truncate()
@@ -83,3 +100,6 @@ def Silme():
     finally:
         dosya.close()
 
+
+if __name__ == "__main__":
+    print(__name__)
