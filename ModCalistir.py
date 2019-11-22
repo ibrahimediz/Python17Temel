@@ -26,6 +26,7 @@
 # print(*sys.path,sep="\n")
 
 import MODUL.DosyaModul as dm
+adres = "bankahesap.csv"
 menu = """
 1-Ekleme
 2-Güncelleme
@@ -39,13 +40,13 @@ anahtar = 1
 while anahtar == 1:
     islem = int(input(menu))
     if islem == 1:
-        dm.Ekleme("adi","soyadi","tel")
+        dm.Ekleme("Hesap No ","Türü ","Tutar ",adres = adres)
     elif islem == 2:
-        dm.Guncelleme("adi","soyadi","tel")
+        dm.Guncelleme("Hesap No ","Türü ","Tutar ",adres = adres)
     elif islem == 3:
-        dm.Silme()
+        dm.Silme(adres = adres)
     elif islem == 4:
-        dm.Listele()
+        dm.Listele(adres = adres)
     elif islem == 5:
         anahtar = 0
 else:

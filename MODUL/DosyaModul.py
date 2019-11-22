@@ -1,5 +1,5 @@
-
-def dosyaAc(adres = "teldefter.csv"):
+adres = "teldefter.csv"
+def dosyaAc(adres = adres):
     import os
     if os.path.exists(adres):
         dosya = open(adres,"r+",encoding="UTF-8")
@@ -25,9 +25,9 @@ def dosyaAc(adres = "teldefter.csv"):
 #     finally:
 #         dosya.close()
 
-def Ekleme(*args):
+def Ekleme(*args,adres=""):
     try:
-        dosya = dosyaAc()
+        dosya = dosyaAc(adres)
         liste = dosya.readlines()
         kayit = ""
         for item in args:
@@ -45,9 +45,9 @@ def Ekleme(*args):
     finally:
         dosya.close()
 # Ekleme("ali","veli","4950")
-def Listele():
+def Listele(adres):
     try :
-        dosya = dosyaAc()
+        dosya = dosyaAc(adres)
         liste = dosya.readlines()
         sira = 1
         for item in liste:
@@ -59,11 +59,11 @@ def Listele():
     finally:
         dosya.close()
 
-def Guncelleme():
+def Guncelleme(*args,adres):
     try:
-        dosya = dosyaAc()
+        dosya = dosyaAc(adres)
         liste = dosya.readlines()
-        Listele()
+        Listele(adres)
         sira = int(input("Güncellemek istediğiniz kaydı seçiniz")) - 1
         kayit = ""
         for item in args:
@@ -83,11 +83,11 @@ def Guncelleme():
 
 
 
-def Silme():
+def Silme(adres):
     try:
-        dosya = dosyaAc()
+        dosya = dosyaAc(adres)
         liste = dosya.readlines()
-        Listele()
+        Listele(adres)
         sira = int(input("Silmek istediğiniz kaydı seçiniz")) - 1
         del liste[sira]
         dosya.seek(0)
@@ -102,4 +102,27 @@ def Silme():
 
 
 if __name__ == "__main__":
-    print(__name__)
+    menu = """
+    1-Ekleme
+    2-Güncelleme
+    3-Silme
+    4-Listeleme
+    5-Çıkış
+    Seçim Yapınız
+    """
+
+    anahtar = 1
+    while anahtar == 1:
+        islem = int(input(menu))
+        if islem == 1:
+            Ekleme("adi","soyadi","tel",adres = adres)
+        elif islem == 2:
+            Guncelleme("adi","soyadi","tel",adres = adres)
+        elif islem == 3:
+            Silme(adres = adres)
+        elif islem == 4:
+            Listele(adres = adres)
+        elif islem == 5:
+            anahtar = 0
+    else:
+        print("İyi Günler")
