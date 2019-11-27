@@ -6,24 +6,33 @@ def dosyaAc(adres = adres):
     else:
         dosya = open(adres,"w+",encoding="UTF-8")
     return dosya
-# def Ekleme(adi="-",soyadi="-",tel="0"):
-#     try:
-#         dosya = dosyaAc()
-#         liste = dosya.readlines()
-#         if not tel.isnumeric():
-#             tel = 0
-#         kayit = "{};{};{}\n".format(adi,\
-#         soyadi,tel)
-#         liste.append(kayit)
-#         dosya.seek(0)
-#         dosya.truncate()
-#         dosya.writelines(liste)
-#         return True
-#     except Exception as hata:
-#         print("Hata Var :",hata)
-#         return False
-#     finally:
-#         dosya.close()
+
+def Arama(arama="",adres=""):
+    """ Dosyada arama yapar \n
+    arama = arama için kullanılacak parametre \n
+    adres = dosyanın adresi \n
+    İbrahim EDİZ 27.11.2019 \n
+    Düzeltme Yunus Emre 28.11.2019 \n
+    """
+    try :
+        sonucListe = []
+        dosya = dosyaAc(adres)
+        liste = dosya.readlines()
+        for item in liste:
+            satirListe = item.split(";")
+            for eleman in satirListe:
+                if arama in eleman:
+                    sonucListe.append(item)
+                    break
+        sira = 1
+        for item in sonucListe:
+            kayit = item.replace(";","\t")    
+            print(sira,kayit,sep="-")
+            sira += 1
+    except Exception as hata:
+        print("Hata Var :",hata)
+    finally:
+        dosya.close()
 
 def Ekleme(*args,adres=""):
     try:
@@ -32,7 +41,6 @@ def Ekleme(*args,adres=""):
         kayit = ""
         for item in args:
             kayit += "{};".format(input(item+"Giriniz"))
-        # Ali;Veli;123123;
         kayit = kayit.rstrip(";") + "\n"
         liste.append(kayit)
         dosya.seek(0)
@@ -44,7 +52,6 @@ def Ekleme(*args,adres=""):
         return False
     finally:
         dosya.close()
-# Ekleme("ali","veli","4950")
 def Listele(adres):
     try :
         dosya = dosyaAc(adres)
@@ -81,8 +88,6 @@ def Guncelleme(*args,adres):
     finally:
         dosya.close()
 
-
-
 def Silme(adres):
     try:
         dosya = dosyaAc(adres)
@@ -99,7 +104,6 @@ def Silme(adres):
         return False
     finally:
         dosya.close()
-
 
 if __name__ == "__main__":
     menu = """

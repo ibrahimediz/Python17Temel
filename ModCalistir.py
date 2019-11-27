@@ -32,7 +32,8 @@ menu = """
 2-Güncelleme
 3-Silme
 4-Listeleme
-5-Çıkış
+5-Arama
+6-Çıkış
 Seçim Yapınız
 """
 
@@ -40,14 +41,17 @@ anahtar = 1
 while anahtar == 1:
     islem = int(input(menu))
     if islem == 1:
-        dm.Ekleme("Hesap No ","Türü ","Tutar ",adres = adres)
+        dm.Ekleme("Adı  ","Soyadı ","Telefon ",adres = adres)
     elif islem == 2:
-        dm.Guncelleme("Hesap No ","Türü ","Tutar ",adres = adres)
+        dm.Guncelleme("Adı  ","Soyadı ","Telefon ",adres = adres)
     elif islem == 3:
         dm.Silme(adres = adres)
     elif islem == 4:
         dm.Listele(adres = adres)
     elif islem == 5:
+        arama = input("Arama anahtarını yazınız")
+        dm.Arama(arama,adres)
+    elif islem == 6:
         anahtar = 0
 else:
     print("İyi Günler")
