@@ -1,5 +1,7 @@
 from random import choice
+
 class MarvelHero:
+    __heroList = []
     def __init__(self,guc,saglik,adi,superGuc):
         self.guc = guc
         self.MaxSaglik = saglik
@@ -7,9 +9,19 @@ class MarvelHero:
         self.adi = adi
         self.superGuc = superGuc
         self.__gucBirikim = 0
+        MarvelHero.__heroList.append(self.adi)
     def Vurus(self):
         self.gucBirikim = 1
         return self.guc
+
+    def Vurus2(self):
+        self.gucBirikim = 2
+        return self.guc*1.25
+
+    def Vurus3(self):
+        self.gucBirikim = 2
+        return self.guc*2
+
     def DarbeAl(self,darbe):
         self.saglik -= darbe
     def Savunma(self,darbe):
@@ -22,6 +34,9 @@ class MarvelHero:
             return self.guc*self.superGuc
         else:
             return self.Vurus()
+
+    def __len__(self):
+        return len(MarvelHero.__heroList)
 
     # def BirikimAyarla(self,deger): # setter
     #     self.__gucBirikim = (self.__gucBirikim + deger )% 5
@@ -43,7 +58,7 @@ class MarvelHero:
     
 
     def VurusGetir(self):
-        hareket = [self.Vurus,self.SuperVurus]
+        hareket = [self.Vurus,self.Vurus2,self.Vurus3,self.SuperVurus]
         return choice(hareket)
 
     def DarbeAlGetir(self):
@@ -61,14 +76,40 @@ class MarvelHero:
     def __del__(self):
         print("Hoşçakal")
 
+    def __str__(self):
+        return self.adi
+
+###################################
+# from abc import ABCMeta,abstractmethod
+
+# class Hero:
+#     __metaclass__ = ABCMeta
+
+#     @abstractmethod
+#     def killaHakan(self):
+#         return "2 2 1 0"
+
+# class Rep(Hero):
+#     def killaHakan(self):
+#         s = super(Rep,self).killaHakan()
+#         return "{}".format(s)
+
+# r = Rep()
+# print(r.killaHakan())
+
+################################
+
+
+
+    
 # P1 = MarvelHero(100,1000,"Deadpool")
         
 class Deadpool(MarvelHero):
     def __init__(self):
         super().__init__(100,1000,"Deadpool",2)
 
-    def DarbeAl(self,darbe):
-        self.saglik -= darbe//2    
+    def DarbeAl(self,darbe): #override
+        self.saglik -= darbe//2  
 
 class Hulk(MarvelHero):
     def __init__(self):
@@ -92,6 +133,4 @@ class Tarkan(MarvelHero):
     def Vurus(self):
         self.gucBirikim = 1
         return self.guc//2
-
-
 

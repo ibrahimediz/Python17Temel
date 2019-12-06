@@ -1,22 +1,24 @@
-class A():
+class A(): #grandparent
     def __init__(self):
         print("A")
-    
+
     def fonk(self):
         print("A fonk")
 
-class B(A):
+class B(A): #parent
     def __init__(self):
-        super().__init__()
+        super(B,self).__init__()
         print("B") 
 
     def fonk(self):
         print("B fonk")
 
-class C(B):
+class C(B): #child
     def __init__(self):
-        super().__init__()
-        print("C")
+        super(C,self).__init__()
+        print(f'Square area: {1+1}')
+
+
 
 c = C()
 c.fonk()

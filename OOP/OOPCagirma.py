@@ -4,6 +4,19 @@ import time
 karliste = [Deadpool,Hulk,IronMan,Tarkan]
 p1 = choice(karliste)()
 p2 = choice(karliste)()
+menu = """
+1- P-C
+2- P-P
+3- C-C
+Oyun Tipini Seçiniz:
+"""
+islem = int(input(menu))
+if islem == 1:
+    print(*karliste,sep="\n")
+    p1 = karliste[int(input("Tarafını Seç"))]()
+    
+
+
 while p1.saglik > 0 and p2.saglik >0:
     time.sleep(1)
     p1.DarbeAlGetir()(p2.VurusGetir()())
@@ -16,6 +29,7 @@ else:
         print(p2.adi," Kazandı")
     else:
         print("Berabere")
+
 
 # while p1.saglik > 0 and p2.saglik >0:
 #     time.sleep(1)
