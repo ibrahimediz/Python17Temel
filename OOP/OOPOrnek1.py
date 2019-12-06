@@ -8,7 +8,7 @@ class MarvelHero:
         self.superGuc = superGuc
         self.__gucBirikim = 0
     def Vurus(self):
-        self.BirikimAyarla(1)
+        self.gucBirikim = 1
         return self.guc
     def DarbeAl(self,darbe):
         self.saglik -= darbe
@@ -23,9 +23,24 @@ class MarvelHero:
         else:
             return self.Vurus()
 
-    def BirikimAyarla(self,deger): # setter
+    # def BirikimAyarla(self,deger): # setter
+    #     self.__gucBirikim = (self.__gucBirikim + deger )% 5
+    
+    # def BirikimGetir(self): ## getter
+    #     return self.__gucBirikim
+
+    @property
+    def gucBirikim(self): ## getter
+        return self.__gucBirikim
+
+    @gucBirikim.setter
+    def gucBirikim(self,deger):
         self.__gucBirikim = (self.__gucBirikim + deger )% 5
 
+    @gucBirikim.deleter
+    def gucBirikim(self):
+        self.__gucBirikim = 0
+    
 
     def VurusGetir(self):
         hareket = [self.Vurus,self.SuperVurus]
@@ -35,8 +50,7 @@ class MarvelHero:
         hareket = [self.DarbeAl,self.Savunma]
         return choice(hareket)
 
-    def BirikimGetir(self): ## getter
-        return self.__gucBirikim
+
 
     def Durum(self):
         bar = (self.saglik*100)/self.MaxSaglik
@@ -61,7 +75,7 @@ class Hulk(MarvelHero):
         super().__init__(100,2000,"Hulk",1.5)
     
     def Vurus(self):
-        self.BirikimAyarla(1)
+        self.gucBirikim = 1
         return self.guc*2
 
 class IronMan(MarvelHero):
@@ -76,7 +90,7 @@ class Tarkan(MarvelHero):
         self.saglik -= darbe//3
 
     def Vurus(self):
-        self.BirikimAyarla(1)
+        self.gucBirikim = 1
         return self.guc//2
 
 

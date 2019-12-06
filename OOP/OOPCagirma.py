@@ -4,7 +4,6 @@ import time
 karliste = [Deadpool,Hulk,IronMan,Tarkan]
 p1 = choice(karliste)()
 p2 = choice(karliste)()
-
 while p1.saglik > 0 and p2.saglik >0:
     time.sleep(1)
     p1.DarbeAlGetir()(p2.VurusGetir()())
@@ -17,7 +16,6 @@ else:
         print(p2.adi," Kazandı")
     else:
         print("Berabere")
-p1.BirikimAyarla(3)
 
 # while p1.saglik > 0 and p2.saglik >0:
 #     time.sleep(1)
